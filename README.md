@@ -44,6 +44,7 @@
   - Full CSS support
   - available minimal syntax
   - transparent mixins
+  - Ability to run via Node.js / JavaScript, (no Ruby)
 
 * Conditionals
   - better than LESS "when"
@@ -53,6 +54,8 @@
 
 * extend
   - Sass doesn't do nesting
+
+* Property Lookup
 
 
 ## Plugins
