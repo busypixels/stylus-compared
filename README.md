@@ -37,6 +37,23 @@
 * JavaScript API
 * Sourcemaps
 
+## The Important Parts
+
+* Syntax (awesome)
+  - Simpler than LESS and scss (even sass)
+  - Full CSS support
+  - available minimal syntax
+  - transparent mixins
+
+* Conditionals
+  - better than LESS "when"
+
+* Placeholders
+  - Not in LESS
+
+* extend
+  - Sass doesn't do nesting
+
 
 ## Plugins
 
