@@ -1,0 +1,56 @@
+# Stylus Demo
+
+## Features
+
+* Optional colons
+* Optional semi-colons
+* Optional commas
+* Optional braces
+* Selectors
+* Variables
+* Interpolation
+* Operators
+* Mixins
+* Functions
+* Keyword Arguments
+* Built-in Functions
+* Rest Params
+* Comments
+* Conditionals
+* Hashes
+* Iteration
+* @import and @require
+* @media
+* @font-face
+* @keyframes
+* Other @-rules
+* @extend
+* @block
+* url()
+* CSS Literal
+* CSS Style Syntax
+* Char Escaping
+* Executable
+* Error Reporting
+* Connect Middleware
+* Introspection API
+* JavaScript API
+* Sourcemaps
+
+
+## Plugins
+
+* [Nib](http://tj.github.io/nib/)
+  - Like Compass for stylus
+  - Built in mixins
+  - Vendor Prefixes
+
+* [Rupture](http://jenius.github.io/rupture/)
+  - Easily readable media query mixins
+
+* [Jeet](http://jeet.gs/)
+  - A grid system for humans
+
+* [Stylint](https://github.com/rossPatton/stylint)
+  - Stylus linting
+
