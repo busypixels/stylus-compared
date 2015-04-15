@@ -23,7 +23,8 @@ gulp.task('jade', function() {
   gulp.src(['./templates/**/*.jade', '!./templates/**/_*.jade'])
     .pipe(jade())
     .on('error', gutil.log)
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./'))
+    .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
