@@ -1,18 +1,21 @@
 var gulp = require("gulp"),
-  connect = require("gulp-connect"),
-  stylus = require("gulp-stylus"),
-  stylint = require('gulp-stylint');
+  connect = require("gulp-connect");
 
 gulp.task('stylus', function () {
-  return gulp.src(['./styl/**/*.styl', '!styl/**/_*'])
+  var stylus = require("gulp-stylus"),
+    flatten = require('gulp-flatten');
+
+  return gulp.src(['**/*.styl', '!**/_*', '!./styl/lib/**/*.styl', '!./node_modules/**/*.styl'])
     .pipe(stylus())
+    .pipe(flatten())
     // .pipe(stylus({use: [nib(), jeet(), rupture()]}))
     .pipe(gulp.dest('./css'))
     .pipe(connect.reload());
 });
 
 gulp.task('stylint', function() {
-  return gulp.src('styl/**/*.styl')
+  var stylint = require('gulp-stylint');
+  return gulp.src(['**/*.styl', '!./styl/lib/**/*.styl', '!./node_modules/**/*.styl'])
     .pipe(stylint())
 });
 
