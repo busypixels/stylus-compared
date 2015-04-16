@@ -19,6 +19,15 @@ gulp.task('stylint', function() {
     .pipe(stylint())
 });
 
+gulp.task('templatizer', function() {
+  var templatizer = require('templatizer');
+
+  templatizer('./**/*.jade', './temp/templatizer.js', {
+    namespace: 'App',
+    dontremoveMixins: true
+  });
+});
+
 gulp.task('jade', function() {
   var jade = require('gulp-jade'),
     gutil = require('gulp-util');
@@ -32,7 +41,7 @@ gulp.task('jade', function() {
 
 gulp.task('watch', function () {
   gulp.watch(['styl/**/*.styl'], ['stylus', 'stylint']);
-  gulp.watch(['templates/**/*.jade'], ['jade']);
+  gulp.watch(['templates/**/*.jade'], ['jade', 'templatizer']);
 });
 
 gulp.task('connect', function() {
@@ -46,6 +55,7 @@ gulp.task('default', [
   'stylus',
   'stylint',
   'jade',
+  'templatizer',
   'connect',
   'watch'
 ]);
