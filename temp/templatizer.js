@@ -16,7 +16,7 @@
 
     // _syntax.jade compiled template
     templatizer["_syntax"] = function tmpl__syntax() {
-        return "<p>yo dawg</p>";
+        return '<p>yo dawgie</p><pre><code class="language-stylus">body\n  background blue</code></pre>';
     };
 
     // docs.jade compiled template
@@ -153,9 +153,14 @@
         return buf.join("");
     };
 
+    // _nav.jade compiled template
+    templatizer["_nav"] = function tmpl__nav() {
+        return '<a href="#syntax">Syntax</a>';
+    };
+
     // index.jade compiled template
     templatizer["index"] = function tmpl_index() {
-        return '<!DOCTYPE html(lang=\'en\')><head><title>Stylus</title><meta name="viewport" content="width=device-width, initial-scale=1"/><meta http-equiv="Content-Type" content="text/html;charset=utf-8"/><link rel="stylesheet" type="text/css" href="css/main.css"/></head><body><h1>Hello World</h1><a href="#syntax">Syntax</a><pre><code class="language-stylus">body\n  background red\n</code></pre><section data-content-block="data-content-block"></section><script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script><script src="js/lib/prism.js" type="text/javascript"></script><script src="js/app.js" type="text/javascript"></script><script src="temp/templatizer.js" type="text/javascript"></script></body>';
+        return '<!DOCTYPE html(lang=\'en\')><head><title>Stylus</title><meta name="viewport" content="width=device-width, initial-scale=1"/><meta http-equiv="Content-Type" content="text/html;charset=utf-8"/><link rel="stylesheet" type="text/css" href="css/main.css"/></head><body><h1>Hello World</h1><a href="#syntax">Syntax</a><section data-content-block="data-content-block"></section><script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script><script src="js/lib/prism.js" type="text/javascript"></script><script src="js/app.js" type="text/javascript"></script><script src="temp/templatizer.js" type="text/javascript"></script></body>';
     };
 
     return templatizer;
