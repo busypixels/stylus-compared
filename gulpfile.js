@@ -40,7 +40,7 @@ gulp.task('jade', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['styl/**/*.styl'], ['stylus', 'stylint']);
+  gulp.watch(['**/*.styl'], ['stylus', 'stylint']);
   gulp.watch(['**/*.jade'], ['jade', 'templatizer']);
 });
 
