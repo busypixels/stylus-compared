@@ -35,6 +35,8 @@ App = {
       tmpl = this.templatizer["_" + file];
 
     container.append(tmpl);
+
+    Prism.highlightAll();
   }
 
 };
