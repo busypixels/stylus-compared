@@ -3,12 +3,14 @@ var gulp = require("gulp"),
 
 gulp.task('stylus', function () {
   var stylus = require("gulp-stylus"),
-    flatten = require('gulp-flatten');
+    flatten = require('gulp-flatten'),
+    nib = require('nib'),
+    jeet = require('jeet'),
+    rupture = require('rupture');
 
   return gulp.src(['**/*.styl', '!**/_*', '!./styl/lib/**/*.styl', '!./node_modules/**/*.styl'])
-    .pipe(stylus())
+    .pipe(stylus({use: [nib(), jeet(), rupture()]}))
     .pipe(flatten())
-    // .pipe(stylus({use: [nib(), jeet(), rupture()]}))
     .pipe(gulp.dest('./css'))
     .pipe(connect.reload());
 });
