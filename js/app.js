@@ -16,11 +16,13 @@ App = {
 
       self.updateRoute(file);
       self.getPatterns(file);
+      self.updateSelectedNav(e.target.hash);
     });
   },
 
   getCurrentRoute: function () {
     this.getPatterns(window.location.hash.split('#')[1] || 'overview');
+    this.updateSelectedNav(window.location.hash);
   },
 
   updateRoute: function (route) {
@@ -37,6 +39,13 @@ App = {
     container.html(tmpl);
 
     Prism.highlightAll();
+  },
+
+  updateSelectedNav: function (hash) {
+    var navListLink = $('.nav-list li a');
+
+    navListLink.removeClass('selected');
+    $('[href="' + hash + '"]').addClass('selected');
   }
 
 };

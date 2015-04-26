@@ -30,8 +30,16 @@ hr
   display inline-block
 
 .nav-link
-  color #fff
+  color $clouds
   text-decoration none
-  font-weight 700
+  font-weight 400
   padding 1em
   display block
+
+  &:hover
+    color $white
+
+  &.selected
+    color $white
+    font-weight 700
+
