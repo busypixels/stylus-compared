@@ -18,7 +18,7 @@ gulp.task('stylus', function () {
 gulp.task('stylint', function() {
   var stylint = require('gulp-stylint');
   return gulp.src(['**/*.styl', '!./styl/lib/**/*.styl', '!./node_modules/**/*.styl'])
-    .pipe(stylint('.stylintrc'))
+    .pipe(stylint({config: '.stylintrc'}))
 });
 
 gulp.task('templatizer', function() {

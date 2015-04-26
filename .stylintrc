@@ -21,7 +21,7 @@
   "namingConvention": false,
   "parenSpace": false,
   "placeholders": false,
-  "semicolons": true,
+  "semicolons": false,
   "sortOrder": false,
   "trailingWhitespace": true,
   "Whitespace": true,
