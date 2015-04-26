@@ -1,0 +1,39 @@
+h2 Conditionals
+
+h3 LESS Guards
+.example
+  pre
+    code.language-less.
+      .mixin (@a) when (lightness(@a) >= 50%) {
+        background-color: black;
+      }
+      .mixin (@a) when (lightness(@a) < 50%) {
+        background-color: white;
+      }
+      .mixin (@a) {
+        color: @a;
+      }
+
+      .class1 { .mixin(#ddd) }
+      .class2 { .mixin(#555) }
+
+  p.
+    Here is what we will get:
+
+  pre
+    code.language-css.
+      .class1 {
+        background-color: black;
+        color: #ddd;
+      }
+      .class2 {
+        background-color: white;
+        color: #555;
+      }
+
+
+h3 Sass Conditionals
+.example
+
+h3 Stylu Conditionals
+.example

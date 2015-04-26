@@ -1,5 +1,6 @@
 var gulp = require("gulp"),
-  connect = require("gulp-connect");
+  connect = require("gulp-connect"),
+  path = require('path');
 
 gulp.task('stylus', function () {
   var stylus = require("gulp-stylus"),
@@ -19,6 +20,16 @@ gulp.task('stylint', function() {
   var stylint = require('gulp-stylint');
   return gulp.src(['**/*.styl', '!./styl/lib/**/*.styl', '!./node_modules/**/*.styl'])
     .pipe(stylint({config: '.stylintrc'}))
+});
+
+gulp.task('less', function () {
+  var less = require('gulp-less');
+
+  return gulp.src(['**/*.less', '!**/_*', '!./less/lib/**/*.less', '!./node_modules/**/*.less'])
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('./css'));
 });
 
 gulp.task('templatizer', function() {
@@ -44,6 +55,7 @@ gulp.task('jade', function() {
 gulp.task('watch', function () {
   gulp.watch(['**/*.styl'], ['stylus', 'stylint']);
   gulp.watch(['**/*.jade'], ['jade', 'templatizer']);
+  gulp.watch(['**/*.less'], ['less']);
 });
 
 gulp.task('connect', function() {
@@ -56,6 +68,7 @@ gulp.task('connect', function() {
 gulp.task('default', [
   'stylus',
   'stylint',
+  'less',
   'jade',
   'templatizer',
   'connect',
