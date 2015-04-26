@@ -22,10 +22,11 @@
   "parenSpace": false,
   "placeholders": false,
   "semicolons": true,
+  "sortOrder": false,
   "trailingWhitespace": true,
   "Whitespace": true,
   "universal": false,
-  "valid": false,
+  "valid": true,
   "zeroUnits": true,
   "zIndexDuplicates": false,
   "zIndexNormalize": false

@@ -20,7 +20,7 @@ App = {
   },
 
   getCurrentRoute: function () {
-    this.getPatterns(window.location.hash.split('#')[1]);
+    this.getPatterns(window.location.hash.split('#')[1] || 'overview');
   },
 
   updateRoute: function (route) {
@@ -34,7 +34,7 @@ App = {
     var container = $('[data-content-block]'),
       tmpl = this.templatizer["_" + file];
 
-    container.append(tmpl);
+    container.html(tmpl);
 
     Prism.highlightAll();
   }
