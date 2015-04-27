@@ -12,10 +12,17 @@ h3 SASS Placeholder
   pre
     code.language-stylus.
       %placeholder-1
-        foo: bar
+        color: red
 
       .include-placeholder-1
         @extend %placeholder-1
+
+  p Generates:
+  pre
+    code.language-css.
+      .include-placeholder-1 {
+        color: red;
+      }
 
 
 h3 Stylus Placeholder
@@ -23,9 +30,16 @@ h3 Stylus Placeholder
   pre
     code.language-stylus.
       $placeholder-1
-        color: red
+        color red
 
       .include-placeholder-1
         @extend $placeholder-1
+
+  p Generates:
+  pre
+    code.language-css.
+      .include-placeholder-1 {
+        color: #f00;
+      }
 
 
