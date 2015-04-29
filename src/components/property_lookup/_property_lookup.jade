@@ -1,0 +1,58 @@
+h2 Property Lookup
+
+h3 Stylus Only
+
+h4 Centering Content
+.example
+  pre
+    code.language-stylus.
+      .property-lookup-center
+        position absolute
+        top 50%
+        left 50%
+        width 150px
+        height 80px
+        margin-left -(@width / 2)
+        margin-top -(@height / 2)
+
+  p Yields:
+
+  pre
+    code.language-css.
+      .property-lookup-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150px;
+        height: 80px;
+        margin-left: -75px;
+        margin-top: -40px;
+      }
+
+h4 Using unless for default
+.example
+  pre
+    code.language-stylus.
+      position()
+        position arguments
+        z-index 1 unless @z-index
+
+      .property-lookup-unless-1
+        z-index 20
+        position absolute
+
+      .property-lookup-unless-2
+        position absolute
+
+  p Yields:
+
+  pre
+    code.language-css.
+      .property-lookup-unless-1 {
+        z-index: 20;
+        position: absolute;
+      }
+      .property-lookup-unless-2 {
+        position: absolute;
+        z-index: 1;
+      }
