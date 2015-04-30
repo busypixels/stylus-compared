@@ -8,3 +8,10 @@ $extended-class
 .extend-parent-2
   @extend $extended-class
   background green
+
+
+$specialDesign
+  color: #FFF
+
+.optional-extend
+  @extend .design !optional, $specialDesign !optional

@@ -38,6 +38,9 @@ h3 LESS
 
 h3 Sass
 p Since we can do placeholders we do not need to generate an extra class
+p
+  strong Note:
+  | Sass does not allow nested selectors
 
 .example
   pre
@@ -96,6 +99,23 @@ p Again with placeholders
       }
       .extend-parent-2 {
         background: #008000;
+      }
+
+  h4 Optional Extending
+  p Useful if you may or may not want to extend a property based on context
+
+  pre
+    code.language-stylus.
+      $specialDesign
+        color: #FFF
+
+      .optional-extend
+        @extend .design !optional, $specialDesign !optional
+
+  pre
+    code.language-css.
+      .optional-extend {
+        color: #fff;
       }
 
 
