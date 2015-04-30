@@ -1,4 +1,4 @@
-# Stylus Demo
+# Stylus Compared
 
 ## Features
 
