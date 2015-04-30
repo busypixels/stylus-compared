@@ -1,6 +1,7 @@
 var gulp = require("gulp"),
   connect = require("gulp-connect"),
-  path = require('path');
+  path = require('path'),
+  ghPages = require('gulp-gh-pages');
 
 gulp.task('stylus', function () {
   var stylus = require("gulp-stylus"),
@@ -72,6 +73,11 @@ gulp.task('connect', function() {
     root: ['bower_components', 'temp', 'src', 'dest'],
     livereload: true
   });
+});
+
+gulp.task('deploy', function() {
+  return gulp.src(['bower_components/**/*', 'temp/**/*', 'src/**/*', 'dest/**/*', 'CNAME'])
+    .pipe(ghPages());
 });
 
 gulp.task('default', [
