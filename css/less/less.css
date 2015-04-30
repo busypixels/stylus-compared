@@ -1,0 +1,19 @@
+.conditional-example-1 {
+  background-color: black;
+  color: #dddddd;
+}
+.conditional-example-2 {
+  background-color: white;
+  color: #555555;
+}
+.extend-parent-1 {
+  background: blue;
+}
+.extend-parent-2 {
+  background: green;
+}
+.extended-class,
+.extend-parent-1,
+.extend-parent-2 {
+  color: red;
+}

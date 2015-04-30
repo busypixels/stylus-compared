@@ -1,0 +1,17 @@
+$extended-class
+  color red
+
+.extend-parent-1
+  @extend $extended-class
+  background blue
+
+.extend-parent-2
+  @extend $extended-class
+  background green
+
+
+$specialDesign
+  color: #FFF
+
+.optional-extend
+  @extend .design !optional, $specialDesign !optional
