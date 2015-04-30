@@ -76,7 +76,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('deploy', function() {
-  return gulp.src(['bower_components/**/*', 'temp/**/*', 'src/**/*', 'dest/**/*', 'CNAME'])
+  return gulp.src(['bower_components/**/*', 'temp/**/*', 'src/**/*', 'dest/**/*'])
     .pipe(ghPages());
 });
 
