@@ -2,7 +2,8 @@ var gulp = require("gulp"),
   connect = require("gulp-connect"),
   path = require('path'),
   ghPages = require('gulp-gh-pages'),
-  clean = require('gulp-clean');
+  clean = require('gulp-clean'),
+  runSequence = require('run-sequence');
 
 gulp.task('stylus', function () {
   var stylus = require("gulp-stylus"),
@@ -63,10 +64,10 @@ gulp.task('jade', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*.styl'], ['stylus', 'stylint']);
-  gulp.watch(['src/**/*.jade'], ['jade', 'templatizer']);
-  gulp.watch(['src/**/*.less'], ['less']);
-  gulp.watch(['src/**/*.sass'], ['sass']);
+  gulp.watch(['src/**/*.styl'], ['stylus', 'stylint', 'build']);
+  gulp.watch(['src/**/*.jade'], ['jade', 'templatizer', , 'build']);
+  gulp.watch(['src/**/*.less'], ['less','build']);
+  gulp.watch(['src/**/*.sass'], ['sass','build']);
 });
 
 gulp.task('connect', function() {
@@ -91,11 +92,13 @@ gulp.task('build', function() {
    .pipe(gulp.dest('./dest'));
 });
 
-gulp.task('gh-pages',[
-  'clean',
-  'build',
-  'deploy'
-]);
+gulp.task('gh-pages', function(callback) {
+  runSequence(
+    ['clean'],
+    ['build'],
+    ['deploy'],
+    callback);
+});
 
 gulp.task('default', [
   'clean',
