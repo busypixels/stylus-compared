@@ -1,0 +1,19 @@
+.conditional-example-1 {
+  background-color: black;
+  color: #ddd; }
+
+.conditional-example-2 {
+  background-color: white;
+  color: #555; }
+
+.include-placeholder-1 {
+  color: red; }
+
+.extend-parent-1 {
+  background: blue; }
+
+.extend-parent-2 {
+  background: green; }
+
+.extend-parent-1, .extend-parent-2 {
+  color: red; }
