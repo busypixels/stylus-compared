@@ -1,7 +1,8 @@
 var gulp = require("gulp"),
   connect = require("gulp-connect"),
   path = require('path'),
-  ghPages = require('gulp-gh-pages');
+  ghPages = require('gulp-gh-pages'),
+  clean = require('gulp-clean');
 
 gulp.task('stylus', function () {
   var stylus = require("gulp-stylus"),
@@ -70,23 +71,41 @@ gulp.task('watch', function () {
 
 gulp.task('connect', function() {
   connect.server({
-    root: ['bower_components', 'temp', 'src', 'dest'],
+    root: ['dest'],
     livereload: true
   });
 });
 
+gulp.task('clean', function () {
+  return gulp.src(['.publish'], {read: false})
+    .pipe(clean());
+});
+
 gulp.task('deploy', function() {
-  return gulp.src(['bower_components/**/*', 'temp/**/*', 'src/**/*', 'dest/**/*'])
+  return gulp.src('./dest/**/*')
     .pipe(ghPages());
 });
 
+gulp.task('build', function() {
+  gulp.src(['dest/**/*', 'bower_components/**/*', 'temp/**/*', 'src/**/*'])
+   .pipe(gulp.dest('./dest'));
+});
+
+gulp.task('gh-pages',[
+  'clean',
+  'build',
+  'deploy'
+]);
+
 gulp.task('default', [
+  'clean',
   'stylus',
   'stylint',
   'less',
   'sass',
   'jade',
   'templatizer',
+  'build',
   'connect',
   'watch'
 ]);
