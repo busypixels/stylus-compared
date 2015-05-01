@@ -1,0 +1,11 @@
+=mixin($a)
+  @if lightness($a) >= 50%
+    background-color: black
+  @else if lightness($a) < 50%
+    background-color: white
+  color: $a;
+
+.conditional-example-1
+  +mixin(#ddd)
+.conditional-example-2
+  +mixin(#555)
