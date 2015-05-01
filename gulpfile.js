@@ -28,7 +28,7 @@ gulp.task('stylint', function() {
 gulp.task('sass', function () {
   var sass = require('gulp-sass');
 
-  gulp.src(['src/**/*.sass'])
+  return gulp.src(['src/**/*.sass'])
     .pipe(sass({indentedSyntax: true}))
     .pipe(gulp.dest('./dest/css'));
 });
@@ -62,10 +62,6 @@ gulp.task('jade', function() {
     .on('error', gutil.log)
     .pipe(gulp.dest('./dest'))
     .pipe(connect.reload());
-
-  gulp.src('./src/components/**/*.jade')
-    .pipe(gulp.dest('./dest/components'))
-    .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
@@ -73,6 +69,7 @@ gulp.task('watch', function () {
   gulp.watch(['src/**/*.jade'], ['jade', 'templatizer']);
   gulp.watch(['src/**/*.less'], ['less']);
   gulp.watch(['src/**/*.sass'], ['sass']);
+  gulp.watch(['src/**/*.js'], ['copy-js']);
 });
 
 gulp.task('connect', function() {
@@ -83,8 +80,11 @@ gulp.task('connect', function() {
 });
 
 gulp.task('clean', function () {
-  return gulp.src(['.publish'], {read: false})
-    .pipe(clean());
+  'use strict';
+  return gulp.src(['dest'], {read: false})
+    .pipe(clean({
+      force: true
+    }));
 });
 
 gulp.task('deploy', function() {
@@ -92,28 +92,32 @@ gulp.task('deploy', function() {
     .pipe(ghPages());
 });
 
-gulp.task('build', function() {
-  gulp.src(['dest/**/*', 'bower_components/**/*', 'temp/**/*', 'src/**/*'])
-   .pipe(gulp.dest('./dest'));
+gulp.task('copy-js', function() {
+  gulp.src('src/js/**/*')
+   .pipe(gulp.dest('./dest/js/'));
+
+  gulp.src('bower_components/**/*')
+    .pipe(gulp.dest('./dest/'));
 });
 
 gulp.task('gh-pages', function(callback) {
   runSequence(
     ['clean'],
-    ['build'],
+    ['stylus', 'jade'],
+    ['templatizer'],
+    ['copy-js'],
     ['deploy'],
     callback);
 });
 
-gulp.task('default', [
-  'clean',
-  'stylus',
-  'stylint',
-  'less',
-  'sass',
-  'jade',
-  'templatizer',
-  'build',
-  'connect',
-  'watch'
-]);
+gulp.task('default', function(callback) {
+  runSequence(
+    ['clean'],
+    ['stylus', 'stylint', 'jade'],
+    ['less', 'sass'],
+    ['jade'],
+    ['templatizer'],
+    ['copy-js'],
+    ['connect', 'watch'],
+    callback);
+});
