@@ -46,10 +46,11 @@ gulp.task('less', function () {
 gulp.task('templatizer', function() {
   var templatizer = require('templatizer');
 
-  templatizer('./src/**/*.jade', './temp/templatizer.js', {
+  templatizer('./src/**/*.jade', './dest/templatizer.js', {
     namespace: 'App',
     dontremoveMixins: true
   });
+
 });
 
 gulp.task('jade', function() {
@@ -61,13 +62,17 @@ gulp.task('jade', function() {
     .on('error', gutil.log)
     .pipe(gulp.dest('./dest'))
     .pipe(connect.reload());
+
+  gulp.src('./src/components/**/*.jade')
+    .pipe(gulp.dest('./dest/components'))
+    .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['src/**/*.styl'], ['stylus', 'stylint', 'build']);
-  gulp.watch(['src/**/*.jade'], ['jade', 'templatizer', , 'build']);
-  gulp.watch(['src/**/*.less'], ['less','build']);
-  gulp.watch(['src/**/*.sass'], ['sass','build']);
+  gulp.watch(['src/**/*.styl'], ['stylus', 'stylint']);
+  gulp.watch(['src/**/*.jade'], ['jade', 'templatizer']);
+  gulp.watch(['src/**/*.less'], ['less']);
+  gulp.watch(['src/**/*.sass'], ['sass']);
 });
 
 gulp.task('connect', function() {
