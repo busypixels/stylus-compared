@@ -1,13 +1,21 @@
-$extended-class
+$extended-placeholder
   color red
 
-.extend-parent-1
-  @extend $extended-class
+.placeholder-extend-parent-1
+  @extend $extended-placeholder
   background blue
 
-.extend-parent-2
-  @extend $extended-class
+.placeholder-extend-parent-2
+  @extend $extended-placeholder
   background green
+
+.extended-class
+  color white
+  .extended-child
+    background black
+
+.class-extend
+  @extend .extended-class, .extended-class .extended-child
 
 
 $specialDesign

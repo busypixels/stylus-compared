@@ -4,10 +4,14 @@
 }
 
 .extend-parent-2 {
-  &:extend(.extended-class);
+  &:extend(.extended-class, .extended-class .extended-child);
   background: green;
 }
 
 .extended-class {
   color: red;
+
+  .extended-child {
+    background: black;
+  }
 }

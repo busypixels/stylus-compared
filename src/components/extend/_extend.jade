@@ -11,12 +11,16 @@ h3 LESS
       }
 
       .extend-parent-2 {
-        &:extend(.extended-class);
+        &:extend(.extended-class, .extended-class .extended-child);
         background: green;
       }
 
       .extended-class {
         color: red;
+
+        .extended-child {
+          background: black;
+        }
       }
 
   p Yields:
@@ -33,6 +37,10 @@ h3 LESS
       .extend-parent-1,
       .extend-parent-2 {
         color: red;
+      }
+      .extended-class .extended-child,
+      .extend-parent-2 {
+        background: black;
       }
 
 
@@ -75,30 +83,48 @@ p Again with placeholders
 .example
   pre
     code.language-stylus.
-      $extended-class
+      $extended-placeholder
         color red
 
-      .extend-parent-1
-        @extend $extended-class
+      .placeholder-extend-parent-1
+        @extend $extended-placeholder
         background blue
 
-      .extend-parent-2
-        @extend $extended-class
+      .placeholder-extend-parent-2
+        @extend $extended-placeholder
         background green
+
+      .extended-class
+        color white
+        .extended-child
+          background black
+
+      .class-extend
+        @extend .extended-class, .extended-class .extended-child
+
 
   p Note: the extended class comes before it's usage (it is CSS after all)
 
   pre
     code.language-css.
-      .extend-parent-1,
-      .extend-parent-2 {
+      .placeholder-extend-parent-1,
+      .placeholder-extend-parent-2 {
         color: #f00;
       }
-      .extend-parent-1 {
+      .placeholder-extend-parent-1 {
         background: #00f;
       }
-      .extend-parent-2 {
+      .placeholder-extend-parent-2 {
         background: #008000;
+      }
+      .extended-class,
+      .class-extend {
+        color: #fff;
+      }
+      .extended-class .extended-child,
+      .class-extend .extended-child,
+      .class-extend {
+        background: #000;
       }
 
   h4 Optional Extending
