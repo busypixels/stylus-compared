@@ -17,3 +17,7 @@
 .extend-parent-2 {
   color: red;
 }
+.extended-class .extended-child,
+.extend-parent-2 {
+  background: black;
+}

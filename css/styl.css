@@ -304,21 +304,35 @@ pre[class*="language-"] {
   background-color: #fff;
   color: #555;
 }
-.extend-parent-1,
-.extend-parent-2 {
+.placeholder-extend-parent-1,
+.placeholder-extend-parent-2 {
   color: #f00;
 }
-.extend-parent-1 {
+.placeholder-extend-parent-1 {
   background: #00f;
 }
-.extend-parent-2 {
+.placeholder-extend-parent-2 {
   background: #008000;
+}
+.extended-class,
+.class-extend {
+  color: #fff;
+}
+.extended-class .extended-child,
+.class-extend .extended-child,
+.class-extend {
+  background: #000;
 }
 .optional-extend {
   color: #fff;
 }
 .include-placeholder-1 {
   color: #f00;
+}
+@media only screen and (min-width: 48em) {
+  .foo {
+    background: #000;
+  }
 }
 .property-lookup-center {
   position: absolute;
